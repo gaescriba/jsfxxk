@@ -1,14 +1,15 @@
-const jsfxxk = (size, input) => {
-  //v1.0 dynamic array
+const jsfxxk = (input) => {
+  
   let initial = []
   let inputLen = input.length
 
-  //initialize the array with 0s
-  for(let i = 0; i < size; i++){
+  //v1.1 fixed size array, very element initialized to 0
+  for(let i = 0; i < 500; i++){
     initial.push(0)
   }
 
-  //v1.0 internal switch (key) 
+  //v1.1 internal switch 
+  //added . support
   let atIndex = 0
   for(let j = 0; j < inputLen; j++){
     const inputChar = input.charAt(j)
@@ -26,10 +27,14 @@ const jsfxxk = (size, input) => {
       case '-':
         initial[atIndex]--
       break
+      case '.':
+        const final = initial.slice(0, atIndex + 1)
+        const result = final.join('')
+        console.log(result)
+      break
     }
   }
-  console.log(initial)
 }
 
-//example, prints [1, 2, 7]
-jsfxxk(3, '+>++>+++++++')
+//example, prints 127 
+jsfxxk('+>++>+++++++.')
